@@ -6,3 +6,6 @@ export default function hasValuesFromArray(set, list) {
       res = false;
     }
   });
+
+  return res;
+}
