@@ -13,8 +13,8 @@ const studentOne: Student = {
 }
 
 const studentTwo: Student = {
-	firstName: "Dilys",
-	lastName: "Anan",
+	firstName: "Dillys",
+	lastName: "Annan",
 	age: "150",
 	location: "Mars"
 }
