@@ -9,30 +9,30 @@ const countStudents = (dataPath) =>
       if (data) {
         const fLines = data.toString('utf-8').trim().split('\n');
         const studGroups = {};
-        const dbFieldNames = fLines[0].split(',');
-        const studPropNames = dbFieldNames.slice(0, dbFieldNames.length - 1);
+        const dbFNames = fLines[0].split(',');
+        const studPNames = dbFNames.slice(0, dbFNames.length - 1);
 
         for (const line of fLines.slice(1)) {
-          const studentRecord = line.split(',');
-          const studentPropValues = studentRecord.slice(
+          const studRecord = line.split(',');
+          const studPValues = studRecord.slice(
             0,
-            studentRecord.length - 1
+            studRecord.length - 1
           );
-          const field = studentRecord[studentRecord.length - 1];
+          const field = studRecord[studRecord.length - 1];
           if (!Object.keys(studGroups).includes(field)) {
             studGroups[field] = [];
           }
-          const studEntries = studPropNames.map((propName, idx) => [
+          const studEntries = studPNames.map((propName, idx) => [
             propName,
-            studentPropValues[idx]
+            studPValues[idx]
           ]);
           studGroups[field].push(Object.fromEntries(studEntries));
         }
 
-        const totalStudents = Object.values(studGroups).reduce(
+        const totStudents = Object.values(studGroups).reduce(
           (pre, cur) => (pre || []).length + cur.length
         );
-        console.log(`Number of students: ${totalStudents}`);
+        console.log(`Number of students: ${totStudents}`);
         for (const [field, group] of Object.entries(studGroups)) {
           const studentNames = group
             .map((student) => student.firstname)
